@@ -1,0 +1,7 @@
+[
+  {"id":1,"label":"3 cuotas","months":3},
+  {"id":2,"label":"6 cuotas","months":6},
+  {"id":3,"label":"9 cuotas","months":9},
+  {"id":4,"label":"12 cuotas","months":12},
+  {"id":5,"label":"15 cuotas","months":15}
+]

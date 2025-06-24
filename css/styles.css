@@ -1,0 +1,6 @@
+body{font-family:sans-serif;margin:0;padding:0}
+nav{background:#eee;padding:1rem}
+nav a{margin-right:.5rem;text-decoration:none;color:#333}
+.card{border:1px solid #ccc;padding:1rem;margin:1rem 0}
+.dialog-form label{display:block;margin-bottom:.5rem}
+.dialog-form input{width:100%;margin-bottom:1rem}

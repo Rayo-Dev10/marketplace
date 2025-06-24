@@ -1,0 +1,4 @@
+[
+  {"id":1,"name":"Celular A","price":500000,"image":"img/celular-a.jpg","category":"celulares"},
+  {"id":2,"name":"Televisor B","price":1200000,"image":"img/tv-b.jpg","category":"tecnologia"}
+]
