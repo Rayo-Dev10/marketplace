@@ -94,6 +94,14 @@
     <footer id="page-footer" class="hidden bg-gray-800 text-white text-center py-4">
         <p>&copy; 2024 MercadoConfianza. Todos los derechos reservados.</p>
     </footer>
+    <footer id="footer-bottom" class="hidden bg-gray-800 text-white py-4 px-4 flex justify-between items-center">
+        <p>&copy; 2024 MercadoConfianza. Todos los derechos reservados.</p>
+        <button id="scroll-top-footer" class="bg-yellow-500 text-gray-800 w-12 h-12 rounded-full flex items-center justify-center shadow-lg" aria-label="Ir arriba">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.5 13.5L12 6m0 0l7.5 7.5M12 6v12" />
+            </svg>
+        </button>
+    </footer>
 
     <!-- Scroll To Top Button -->
     <button id="scroll-top" class="hidden fixed bottom-6 right-6 bg-green-600 text-white p-3 rounded-full shadow-lg animate-pulse" aria-label="Ir arriba">
@@ -182,17 +190,28 @@
             
             let currentProductPrice = 0;
             const footer = document.getElementById("page-footer");
+            const footerBottom = document.getElementById("footer-bottom");
             const scrollTopBtn = document.getElementById("scroll-top");
+            const scrollTopFooter = document.getElementById("scroll-top-footer");
             let footerShown = false;
             window.addEventListener("scroll", () => {
+                const atBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 10;
                 if (!footerShown && window.scrollY > 0) {
                     footer.classList.remove("hidden");
                     footerShown = true;
                 }
-                if (window.scrollY > 0) {
+                if (window.scrollY > 0 && !atBottom) {
                     scrollTopBtn.classList.remove("hidden");
                 } else {
                     scrollTopBtn.classList.add("hidden");
+                }
+                if (atBottom) {
+                    footerBottom.classList.remove("hidden");
+                    footer.classList.add("hidden");
+                    scrollTopBtn.classList.add("hidden");
+                } else {
+                    footerBottom.classList.add("hidden");
+                    if (footerShown) footer.classList.remove("hidden");
                 }
             });
 
@@ -384,6 +403,9 @@
             closeModalBtn.addEventListener('click', () => modal.classList.add('hidden'));
             cuotasSlider.addEventListener('input', calculateCredit);
             scrollTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            scrollTopFooter.addEventListener('click', () => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
             fetch("products.json")
