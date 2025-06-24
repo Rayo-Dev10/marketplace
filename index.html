@@ -171,6 +171,7 @@
 
             const mitosBtn = document.getElementById('mitos-btn');
             const mitosSection = document.getElementById('mitos-section');
+            let mitosVisible = false;
             
             let currentProductPrice = 0;
             const footer = document.getElementById("page-footer");
@@ -239,33 +240,43 @@
                 `;
             }
 
-            function renderMitos() {
-                if (!mitosSection.classList.contains('hidden')) {
-                    mitosSection.scrollIntoView({ behavior: 'smooth' });
-                    return;
-                }
-                mitosSection.innerHTML = '';
-                mitos.forEach(item => {
-                    const block = document.createElement('div');
-                    block.className = 'bg-white p-6 rounded-lg shadow';
-                    block.innerHTML = `
-                        <h3 class="text-lg font-bold text-green-700 mb-2">Mito</h3>
-                        <p class="mb-4">${item.mito}</p>
-                        <h4 class="text-lg font-bold text-green-700 mb-2">Realidad</h4>
-                        <p>${item.realidad}</p>
-                    `;
+            function toggleMitos() {
+                if (!mitosVisible) {
+                    if (mitosSection.innerHTML === '') {
+                        mitos.forEach(item => {
+                            const block = document.createElement('div');
+                            block.className = 'bg-white p-6 rounded-lg shadow';
+                            block.innerHTML = `
+                                <h3 class="text-lg font-bold text-green-700 mb-2">Mito</h3>
+                                <p class="mb-4">${item.mito}</p>
+                                <h4 class="text-lg font-bold text-green-700 mb-2">Realidad</h4>
+                                <p>${item.realidad}</p>
+                            `;
 
-                    const grid = document.createElement('div');
-                    grid.className = 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4';
-                    getRandomProducts(4).forEach(prod => {
-                        grid.innerHTML += createProductCard(prod, nextCTA());
-                    });
-                    block.appendChild(grid);
-                    mitosSection.appendChild(block);
-                });
-                mitosSection.classList.remove('hidden');
-                productGrid.classList.add('hidden');
-                mitosSection.scrollIntoView({ behavior: 'smooth' });
+                            const grid = document.createElement('div');
+                            grid.className = 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4';
+                            getRandomProducts(4).forEach(prod => {
+                                grid.innerHTML += createProductCard(prod, nextCTA());
+                            });
+                            block.appendChild(grid);
+                            mitosSection.appendChild(block);
+                        });
+                    }
+                    mitosSection.classList.remove('hidden');
+                    productGrid.classList.add('hidden');
+                    mitosBtn.textContent = 'Catálogo completo';
+                    mitosBtn.classList.remove('bg-green-600', 'hover:bg-green-700');
+                    mitosBtn.classList.add('bg-yellow-400', 'hover:bg-yellow-500');
+                    mitosSection.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    mitosSection.classList.add('hidden');
+                    productGrid.classList.remove('hidden');
+                    mitosBtn.textContent = 'Mitos y Verdades';
+                    mitosBtn.classList.remove('bg-yellow-400', 'hover:bg-yellow-500');
+                    mitosBtn.classList.add('bg-green-600', 'hover:bg-green-700');
+                    productGrid.scrollIntoView({ behavior: 'smooth' });
+                }
+                mitosVisible = !mitosVisible;
             }
 
             function formatCurrency(value) {
@@ -355,7 +366,7 @@
                 }
             });
 
-            mitosBtn.addEventListener('click', renderMitos);
+            mitosBtn.addEventListener('click', toggleMitos);
 
             closeModalBtn.addEventListener('click', () => modal.classList.add('hidden'));
             cuotasSlider.addEventListener('input', calculateCredit);
