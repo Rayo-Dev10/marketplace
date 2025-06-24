@@ -1,0 +1,4 @@
+[
+  {"id":1,"name":"Celular A","price":800000,"image":"celular_a.jpg","category":"celulares"},
+  {"id":2,"name":"Lavadora B","price":1500000,"image":"lavadora_b.jpg","category":"linea blanca"}
+]

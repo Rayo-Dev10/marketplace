@@ -1,0 +1,7 @@
+[
+  {"id":1,"cuotas":1,"descripcion":"Pago contraentrega"},
+  {"id":2,"cuotas":3,"descripcion":"3 cuotas"},
+  {"id":3,"cuotas":6,"descripcion":"6 cuotas"},
+  {"id":4,"cuotas":9,"descripcion":"9 cuotas"},
+  {"id":5,"cuotas":12,"descripcion":"12 cuotas"}
+]
