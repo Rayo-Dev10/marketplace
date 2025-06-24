@@ -1,0 +1,5 @@
+[
+  {"id":1,"name":"Teléfono A","price":500000,"image":"img/phone_a.jpg","category":"celulares"},
+  {"id":2,"name":"Lavadora B","price":1200000,"image":"img/wash_b.jpg","category":"linea blanca"},
+  {"id":3,"name":"Televisor C","price":1500000,"image":"img/tv_c.jpg","category":"linea marron"}
+]
