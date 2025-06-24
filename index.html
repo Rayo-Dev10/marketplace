@@ -195,17 +195,19 @@
             const scrollTopFooter = document.getElementById("scroll-top-footer");
             let footerShown = false;
             window.addEventListener("scroll", () => {
-                const atBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 10;
+                const scrollHeight = document.documentElement.scrollHeight;
+                const progress = (window.scrollY + window.innerHeight) / scrollHeight;
+                const nearBottom = progress >= 0.9;
                 if (!footerShown && window.scrollY > 0) {
                     footer.classList.remove("hidden");
                     footerShown = true;
                 }
-                if (window.scrollY > 0 && !atBottom) {
+                if (window.scrollY > 0 && !nearBottom) {
                     scrollTopBtn.classList.remove("hidden");
                 } else {
                     scrollTopBtn.classList.add("hidden");
                 }
-                if (atBottom) {
+                if (nearBottom) {
                     footerBottom.classList.remove("hidden");
                     footer.classList.add("hidden");
                     scrollTopBtn.classList.add("hidden");
