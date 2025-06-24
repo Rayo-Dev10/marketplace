@@ -1,0 +1,14 @@
+[
+    {"id": 1, "name": "Celular Avanzado X1", "price": 1200000, "category": "celulares", "image": "https://placehold.co/400x400/34d399/ffffff?text=Celular+X1"},
+    {"id": 2, "name": "Refrigerador Familiar", "price": 2500000, "category": "linea blanca", "image": "https://placehold.co/400x400/93c5fd/ffffff?text=Refrigerador"},
+    {"id": 3, "name": "TV Smart 55\" 4K", "price": 1800000, "category": "linea marron", "image": "https://placehold.co/400x400/f87171/ffffff?text=TV+55"},
+    {"id": 4, "name": "Laptop Pro 14\"", "price": 3200000, "category": "tecnologia", "image": "https://placehold.co/400x400/facc15/ffffff?text=Laptop+Pro"},
+    {"id": 5, "name": "Lavadora Carga Frontal", "price": 1950000, "category": "linea blanca", "image": "https://placehold.co/400x400/93c5fd/ffffff?text=Lavadora"},
+    {"id": 6, "name": "Smartphone Económico", "price": 750000, "category": "celulares", "image": "https://placehold.co/400x400/34d399/ffffff?text=Celular+Eco"},
+    {"id": 7, "name": "Sofá 3 Puestos", "price": 980000, "category": "hogar", "image": "https://placehold.co/400x400/c084fc/ffffff?text=Sof%C3%A1"},
+    {"id": 8, "name": "Audífonos Inalámbricos", "price": 350000, "category": "tecnologia", "image": "https://placehold.co/400x400/facc15/ffffff?text=Aud%C3%ADfonos"},
+    {"id": 9, "name": "Microondas Digital", "price": 450000, "category": "linea blanca", "image": "https://placehold.co/400x400/93c5fd/ffffff?text=Microondas"},
+    {"id": 10, "name": "Barra de Sonido", "price": 600000, "category": "linea marron", "image": "https://placehold.co/400x400/f87171/ffffff?text=Soundbar"},
+    {"id": 11, "name": "Tablet 10\"", "price": 890000, "category": "tecnologia", "image": "https://placehold.co/400x400/facc15/ffffff?text=Tablet"},
+    {"id": 12, "name": "Juego de Comedor", "price": 1300000, "category": "hogar", "image": "https://placehold.co/400x400/c084fc/ffffff?text=Comedor"}
+]
