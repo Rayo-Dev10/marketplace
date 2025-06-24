@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MercadoConfianza - Crédito Transparente para tu Progreso</title>
+    <title>Sacalo - Financiación para quienes otros rechazan</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,8 +12,9 @@
         body {
             font-family: 'Inter', sans-serif;
         }
-        .hero-bg {
-            background-color: #f0fdf4; /* Un verde claro y optimista */
+        .hero-section {
+            background-color: #ffffff; /* Fondo por defecto */
+            color: #1f2937; /* Texto oscuro */
         }
         .active-filter {
             background-color: #16a34a; /* Verde */
@@ -48,7 +49,7 @@
     <!-- Header -->
     <header class="bg-white shadow-sm sticky top-0 z-40">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <h1 class="text-2xl font-bold text-green-700">MercadoConfianza</h1>
+            <h1 class="text-2xl font-bold text-green-700">Sacalo</h1>
             <nav class="flex items-center space-x-6">
                 <div class="flex items-center space-x-4">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
@@ -62,9 +63,14 @@
     <main class="container mx-auto px-4 py-8">
         
         <!-- Hero Section -->
-        <section class="hero-bg rounded-xl p-8 md:p-12 mb-12 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-green-800 mb-4">Crédito transparente para alcanzar tus metas.</h2>
-            <p class="text-lg text-green-700 max-w-2xl mx-auto">Aquí no hay letra pequeña. Te mostramos cada peso de tu crédito para que compres con total confianza y construyas tu futuro.</p>
+        <section class="hero-section bg-white text-gray-900 rounded-xl p-8 md:p-12 mb-12 text-center md:text-left">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Financia lo que necesitas, sin tarjeta y en pocos pasos.</h1>
+            <p class="text-lg max-w-2xl mx-auto md:mx-0 mb-2">Con Sacalo puedes pagar desde tu factura de energía (CHEC) o gas natural (Efigas), o acceder a crédito personal directo.</p>
+            <p class="text-lg max-w-2xl mx-auto md:mx-0 mb-6">¿Lo mejor? ¡También financiamos celulares incluso si estás reportado!</p>
+            <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center md:justify-start">
+                <a id="btn-financiar-celular" href="#" class="px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors text-center">Financiar celular</a>
+                <a id="btn-ver-catalogo" href="#product-grid" class="px-6 py-3 bg-gray-200 text-gray-800 font-semibold rounded-lg hover:bg-gray-300 transition-colors text-center">Ver catálogo</a>
+            </div>
         </section>
 
         <div class="text-center mb-8">
@@ -92,10 +98,10 @@
     </main>
     <!-- Footer -->
     <footer id="page-footer" class="hidden bg-gray-800 text-white text-center py-4">
-        <p>&copy; 2024 MercadoConfianza. Todos los derechos reservados.</p>
+        <p>&copy; 2024 Sacalo (sacalo.com.co). Todos los derechos reservados.</p>
     </footer>
     <footer id="footer-bottom" class="hidden bg-gray-800 text-white py-4 px-4 flex justify-between items-center">
-        <p>&copy; 2024 MercadoConfianza. Todos los derechos reservados.</p>
+        <p>&copy; 2024 Sacalo (sacalo.com.co). Todos los derechos reservados.</p>
         <button id="scroll-top-footer" class="bg-yellow-500 text-gray-800 w-12 h-12 rounded-full flex items-center justify-center shadow-lg" aria-label="Ir arriba">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.5 13.5L12 6m0 0l7.5 7.5M12 6v12" />
@@ -218,11 +224,11 @@
             });
 
             const mitos = [
-                { mito: "Un producto financiado cuesta el doble que uno pagado de contado.", realidad: "Es cierto que pagar a plazos implica un costo adicional, pero en MercaConfianza te conectamos con opciones justas y claras. Puedes acceder al producto que deseas sin esperar meses para ahorrar. Lo pagas por partes, sin deudas ocultas." },
+                { mito: "Un producto financiado cuesta el doble que uno pagado de contado.", realidad: "Es cierto que pagar a plazos implica un costo adicional, pero en Sacalo asumimos riesgos que otros no toman para que recibas el producto de inmediato. Lo pagas por partes, sin deudas ocultas." },
                 { mito: "Si no tengo vida crediticia, no me van a aprobar nada.", realidad: "Nuestro sistema está pensado precisamente para quienes no han accedido a bancos o tarjetas. Con opciones como financiación a través de factura de servicios públicos, rompemos barreras y te damos una oportunidad de comenzar." },
                 { mito: "Me pueden embargar si no pago una cuota.", realidad: "Nuestros aliados financieros usan métodos de cobro flexibles y razonables. Lo importante es comunicarte si tienes dificultades, para encontrar una solución. No trabajamos con cobranzas agresivas ni te ponemos en riesgo por un retraso ocasional." },
-                { mito: "Es más seguro comprar en tiendas grandes.", realidad: "En MercaConfianza trabajamos con aliados legales y confiables como Brilla o Somos. Validamos identidad, aseguramos entregas y todo se hace bajo contrato. Sin letra pequeña, sin engaños, sin sorpresas." },
-                { mito: "Si financio, no puedo pagar antes de tiempo.", realidad: "Puedes pagar cuando quieras. De hecho, pagar anticipadamente reduce los intereses y demuestra tu responsabilidad. En MercaConfianza eso es bien visto y puede ayudarte a obtener mejores condiciones la próxima vez." }
+                { mito: "Es más seguro comprar en tiendas grandes.", realidad: "En Sacalo trabajamos con aliados legales y confiables como Brilla o Somos. Validamos identidad, aseguramos entregas y todo se hace bajo contrato. Sin letra pequeña, sin engaños, sin sorpresas." },
+                { mito: "Si financio, no puedo pagar antes de tiempo.", realidad: "Puedes pagar cuando quieras. De hecho, pagar anticipadamente reduce los intereses y demuestra tu responsabilidad. En Sacalo eso es bien visto y puede ayudarte a obtener mejores condiciones la próxima vez." }
             ];
 
             const ctaTexts = [
