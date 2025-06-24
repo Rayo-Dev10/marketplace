@@ -27,6 +27,20 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
         }
+        .shine::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
+            animation: shine 1.5s linear infinite;
+        }
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -36,7 +50,6 @@
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <h1 class="text-2xl font-bold text-green-700">MercadoConfianza</h1>
             <nav class="flex items-center space-x-6">
-                <button id="mitos-btn" class="text-green-700 font-medium hover:underline">Mitos y Verdades</button>
                 <div class="flex items-center space-x-4">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
@@ -53,6 +66,10 @@
             <h2 class="text-3xl md:text-4xl font-bold text-green-800 mb-4">Crédito transparente para alcanzar tus metas.</h2>
             <p class="text-lg text-green-700 max-w-2xl mx-auto">Aquí no hay letra pequeña. Te mostramos cada peso de tu crédito para que compres con total confianza y construyas tu futuro.</p>
         </section>
+
+        <div class="text-center mb-8">
+            <button id="mitos-btn" class="shine relative overflow-hidden mx-auto px-6 py-3 bg-green-600 text-white font-semibold rounded-lg shadow-lg hover:bg-green-700 focus:outline-none">Mitos y Verdades</button>
+        </div>
 
         <!-- Category Filters -->
         <section class="mb-8">
@@ -247,6 +264,7 @@
                     mitosSection.appendChild(block);
                 });
                 mitosSection.classList.remove('hidden');
+                productGrid.classList.add('hidden');
                 mitosSection.scrollIntoView({ behavior: 'smooth' });
             }
 
