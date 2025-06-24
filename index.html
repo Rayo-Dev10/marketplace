@@ -35,10 +35,13 @@
     <header class="bg-white shadow-sm sticky top-0 z-40">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <h1 class="text-2xl font-bold text-green-700">MercadoConfianza</h1>
-            <div class="flex items-center space-x-4">
+            <nav class="flex items-center space-x-6">
+                <button id="mitos-btn" class="text-green-700 font-medium hover:underline">Mitos y Verdades</button>
+                <div class="flex items-center space-x-4">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
-            </div>
+                </div>
+            </nav>
         </div>
     </header>
 
@@ -68,6 +71,7 @@
         <section id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             <!-- Products will be injected here by JavaScript -->
         </section>
+        <section id="mitos-section" class="mt-12 space-y-8 hidden"></section>
     </main>
     <!-- Footer -->
     <footer id="page-footer" class="hidden bg-gray-800 text-white text-center py-4">
@@ -147,6 +151,9 @@
             const tasaInteres = document.getElementById('tasa-interes');
             const costoFianza = document.getElementById('costo-fianza');
             const costoTotal = document.getElementById('costo-total');
+
+            const mitosBtn = document.getElementById('mitos-btn');
+            const mitosSection = document.getElementById('mitos-section');
             
             let currentProductPrice = 0;
             const footer = document.getElementById("page-footer");
@@ -157,6 +164,91 @@
                     footerShown = true;
                 }
             });
+
+            const mitos = [
+                { mito: "Un producto financiado cuesta el doble que uno pagado de contado.", realidad: "Es cierto que pagar a plazos implica un costo adicional, pero en MercaConfianza te conectamos con opciones justas y claras. Puedes acceder al producto que deseas sin esperar meses para ahorrar. Lo pagas por partes, sin deudas ocultas." },
+                { mito: "Si no tengo vida crediticia, no me van a aprobar nada.", realidad: "Nuestro sistema está pensado precisamente para quienes no han accedido a bancos o tarjetas. Con opciones como financiación a través de factura de servicios públicos, rompemos barreras y te damos una oportunidad de comenzar." },
+                { mito: "Me pueden embargar si no pago una cuota.", realidad: "Nuestros aliados financieros usan métodos de cobro flexibles y razonables. Lo importante es comunicarte si tienes dificultades, para encontrar una solución. No trabajamos con cobranzas agresivas ni te ponemos en riesgo por un retraso ocasional." },
+                { mito: "Es más seguro comprar en tiendas grandes.", realidad: "En MercaConfianza trabajamos con aliados legales y confiables como Brilla o Somos. Validamos identidad, aseguramos entregas y todo se hace bajo contrato. Sin letra pequeña, sin engaños, sin sorpresas." },
+                { mito: "Si financio, no puedo pagar antes de tiempo.", realidad: "Puedes pagar cuando quieras. De hecho, pagar anticipadamente reduce los intereses y demuestra tu responsabilidad. En MercaConfianza eso es bien visto y puede ayudarte a obtener mejores condiciones la próxima vez." }
+            ];
+
+            const ctaTexts = [
+                "Solicitar entrega a domicilio",
+                "Lo quiero en mi casa",
+                "Comprar ahora con financiación",
+                "Adquirir en cuotas",
+                "Pedir hoy mismo",
+                "Consultar envío rápido disponible",
+                "Obtener desde casa",
+                "Financiar con mi factura",
+                "Financiar hoy mismo",
+                "Llevar a crédito ahora",
+                "Pagar a mi ritmo",
+                "Estrenar sin pagar todo",
+                "Recibir con entrega local",
+                "Comprar con seguridad y garantía",
+                "Disfrutar hoy, pagar después",
+                "Comenzar solicitud"
+            ];
+            let ctaIndex = 0;
+
+            function nextCTA() {
+                const text = ctaTexts[ctaIndex % ctaTexts.length];
+                ctaIndex++;
+                return text;
+            }
+
+            function getRandomProducts(num) {
+                const list = [];
+                for (let i = 0; i < num; i++) {
+                    list.push(products[Math.floor(Math.random() * products.length)]);
+                }
+                return list;
+            }
+
+            function createProductCard(product, cta) {
+                return `
+                    <div class="product-card bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-48 object-cover">
+                        <div class="p-4 flex flex-col flex-grow">
+                            <h4 class="text-md font-semibold text-gray-800 flex-grow">${product.name}</h4>
+                            <p class="text-lg font-bold text-gray-900 mt-2">${formatCurrency(product.price)}</p>
+                            <button data-id="${product.id}" class="open-modal-btn w-full mt-4 bg-green-100 text-green-800 font-semibold py-2 px-4 rounded-lg hover:bg-green-200 transition-colors text-sm">
+                                ${cta}
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+
+            function renderMitos() {
+                if (!mitosSection.classList.contains('hidden')) {
+                    mitosSection.scrollIntoView({ behavior: 'smooth' });
+                    return;
+                }
+                mitosSection.innerHTML = '';
+                mitos.forEach(item => {
+                    const block = document.createElement('div');
+                    block.className = 'bg-white p-6 rounded-lg shadow';
+                    block.innerHTML = `
+                        <h3 class="text-lg font-bold text-green-700 mb-2">Mito</h3>
+                        <p class="mb-4">${item.mito}</p>
+                        <h4 class="text-lg font-bold text-green-700 mb-2">Realidad</h4>
+                        <p>${item.realidad}</p>
+                    `;
+
+                    const grid = document.createElement('div');
+                    grid.className = 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4';
+                    getRandomProducts(4).forEach(prod => {
+                        grid.innerHTML += createProductCard(prod, nextCTA());
+                    });
+                    block.appendChild(grid);
+                    mitosSection.appendChild(block);
+                });
+                mitosSection.classList.remove('hidden');
+                mitosSection.scrollIntoView({ behavior: 'smooth' });
+            }
 
             function formatCurrency(value) {
                 return new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits: 0 }).format(value);
@@ -230,7 +322,7 @@
                 }
             });
 
-            productGrid.addEventListener('click', (e) => {
+            document.addEventListener('click', (e) => {
                 if (e.target.classList.contains('open-modal-btn')) {
                     const productId = parseInt(e.target.dataset.id);
                     const product = products.find(p => p.id === productId);
@@ -244,6 +336,8 @@
                     modal.classList.remove('hidden');
                 }
             });
+
+            mitosBtn.addEventListener('click', renderMitos);
 
             closeModalBtn.addEventListener('click', () => modal.classList.add('hidden'));
             cuotasSlider.addEventListener('input', calculateCredit);
